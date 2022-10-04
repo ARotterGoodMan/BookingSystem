@@ -1,10 +1,10 @@
 import {createRouter, createWebHashHistory} from "vue-router";
-import LoginUp from "@/view/LoginUp";
-import RemindInfo from "@/view/RemindInfo";
-import ReserveDate from "@/view/ReserveDate";
-import ReserveTeacher from "@/view/ReserveTeacher";
-import UpdateUserInfo from "@/view/UpdateUserInfo";
-import UserInfo from "@/view/UserInfo";
+import LoginUp from "@/view/user/LoginUp";
+import RemindInfo from "@/view/user/RemindInfo";
+import ReserveDate from "@/view/user/ReserveDate";
+import ReserveTeacher from "@/view/user/ReserveTeacher";
+import UpdateUserInfo from "@/view/user/UpdateUserInfo";
+import UserInfo from "@/view/user/UserInfo";
 
 
 const routes = [

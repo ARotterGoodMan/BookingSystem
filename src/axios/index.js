@@ -5,7 +5,7 @@ const post = axios.post;
 
 
 export default class Axios {
-    static url = "http://1.12.246.2:5000"
+    static url = ""
 
     static set_insert_data = (user_info, data) => {
         return {
