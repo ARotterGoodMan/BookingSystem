@@ -2,13 +2,9 @@ import axios from "axios";
 
 const get = axios.get;
 const post = axios.post;
-
-axios.defaults.baseURL = "/api";
-
+axios.defaults.baseURL = "http://1.12.246.2:5000/"
 
 export default class Axios {
-    // static url = "http://1.12.246.2:5000"
-
     static set_insert_data = (user_info, data) => {
         return {
             A_id: user_info.A_id,
@@ -62,7 +58,7 @@ export default class Axios {
 
     static a_get_reserve = (that) => {
         that.my_reserves = []
-        get( "a_get_reserve")
+        get("a_get_reserve")
             .then(res => {
                 for (let i = 0; i < res.data.length; i++) {
                     that.my_reserves.push(res.data[i])
@@ -157,7 +153,7 @@ export default class Axios {
                 downloadElement.href = href;
                 downloadElement.download = '预约信息.xlsx';
                 document.body.appendChild(downloadElement);
-                downloadElement.click(); //点击下载
+                downloadElement.click();
                 document.body.removeChild(downloadElement);
                 window.URL.revokeObjectURL(href);
             }
