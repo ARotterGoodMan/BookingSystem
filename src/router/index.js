@@ -5,12 +5,27 @@ import ReserveDate from "@/view/user/ReserveDate";
 import ReserveTeacher from "@/view/user/ReserveTeacher";
 import UpdateUserInfo from "@/view/user/UpdateUserInfo";
 import UserInfo from "@/view/user/UserInfo";
+import ALoginUp from "@/view/admin/ALoginUp";
+import ARemindInfo from "@/view/admin/ARemindInfo";
+import RestDay from "@/view/admin/RestDay";
 
 
 const routes = [
     {
         path: '/',
         component: LoginUp
+    },
+    {
+        path: '/admin',
+        component: ALoginUp
+    },
+    {
+        path: '/admin/remind',
+        component: ARemindInfo
+    },
+    {
+        path: '/admin/rest_day',
+        component: RestDay
     },
     {
         path: '/remind',
@@ -32,7 +47,6 @@ const routes = [
         path: '/update',
         component: UpdateUserInfo
     }
-
 ]
 
 export const router = createRouter({

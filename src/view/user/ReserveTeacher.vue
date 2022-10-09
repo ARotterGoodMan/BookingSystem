@@ -16,7 +16,7 @@
     </div>
   </div>
   <tab-bar nav="reserve_teacher"></tab-bar>
-  <b-modal v-model="show" centered hide-footer hide-header>
+  <b-modal v-model="show" centered="true" hide-footer="true" hide-header="true">
     <p class="modal-head">
       <img class="modal-logo" :src="modal_logo" alt="">
       &nbsp;&nbsp;&nbsp;&nbsp;<b>学员首次登录，信息待完善</b><br>
