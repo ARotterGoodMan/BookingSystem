@@ -7,18 +7,22 @@
              :min="start" :max="end" v-model="form.date" required placeholder="请选择预约日期">
       <div class="btn_list">
         <b-button class="but btn-sm col-3" v-for="time in period" variant="outline-primary" :key="time"
-                  @click="clickTime(time)" :disabled='reserves.indexOf(form.date+" "+time)!==-1&&form.date!==""'
+                  @click="clickTime(time)"
+                  :disabled='reserves.indexOf(form.date+" "+time)!==-1&&form.date!==""
+                  ||my_reserves_date.indexOf(form.date)!==-1'
                   id="reserves"
                   :class="form.time===time?'active':''"
         ><i class="fa fa-angle-down"></i><br>{{ time.split("-")[0] }}<br>{{ time.split("-")[1] }}
         </b-button>
         <b-button class="but btn-sm col-3" variant="outline-primary"
                   @click="clickTime('其他时间')" id="reserves"
+                  :disabled='my_reserves_date.indexOf(form.date)!==-1'
                   :class="form.time==='其他时间'?'active':''"
+                  style="font-size: 1rem !important;"
         ><i class="fa fa-angle-down"></i><br>其它时间<br>咨询老师
         </b-button>
+        <b-alert variant="danger" :show="my_reserves_date.indexOf(form.date)!==-1">每日最多可预约一次</b-alert>
       </div>
-      <b-alert variant="danger" :show="show_alert">Default Alert</b-alert>
       <input type="text" class="form-control date rounded w-75 m-auto"
              v-model="form.remark" placeholder="你还有什么想沟通的">
       <div class="d-grid">
@@ -28,8 +32,6 @@
     <div class="update_info text-center h6 text-white" style="margin-top: 1vh">
       <b>基本信息想要修改?<span @click="update_info" style="color:#1b9ea7;">点击修改信息</span></b>
     </div>
-
-
   </div>
 </template>
 
@@ -59,7 +61,8 @@ export default {
   props: {
     reserves: String,
     clickTeacherName: String,
-    period: []
+    period: [],
+    my_reserves: []
   },
   emits: ['close_reserve_date', 'clickDateTime'],
   data() {
@@ -67,12 +70,20 @@ export default {
       start,
       end,
       show_alert: false,
+      my_reserves_date: [],
       form: {
         date: '',
         time: '',
         remark: ''
       }
     };
+  },
+  updated() {
+    let my_reserves_date = []
+    for (let i = 0; i < this.my_reserves.length; i++) {
+      my_reserves_date.push(this.my_reserves[i].date);
+    }
+    this.my_reserves_date = my_reserves_date
   },
   methods: {
     close() {
@@ -81,7 +92,6 @@ export default {
         path: '/reserve_teacher'
       })
     },
-
     clickTime(time) {
       this.form.time = time
       this.show_alert = false
@@ -100,7 +110,6 @@ export default {
         path: '/update'
       })
     }
-
   }
 
 }
@@ -151,14 +160,11 @@ export default {
   font-size: 1.5rem;
 }
 
-.but:last-child {
-  font-size: 1rem;
-}
-
 .but:disabled {
   background-color: #69b09c;
   color: white;
 }
+
 
 .click {
   width: 13rem;

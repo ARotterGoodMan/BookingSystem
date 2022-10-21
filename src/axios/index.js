@@ -2,7 +2,7 @@ import axios from "axios";
 
 const get = axios.get;
 const post = axios.post;
-axios.defaults.baseURL = "http://1.12.246.2:5000/"
+axios.defaults.baseURL = ""
 
 export default class Axios {
     static set_insert_data = (user_info, data) => {

@@ -1,11 +1,12 @@
 <template>
   <div class="app-container">
-    <router-view @login="login" :error="user_info.error" :a_error="A_login_status.error"
-                 :model_show="user_info.state==='0'" :user_info="user_info" @A_login="A_login"
-                 :teachers="teachers" @update="update_user_info" @click_teacher="click_teacher"
-                 :reserves="reserves" @clickDateTime="clickDateTime" :my_reserves="my_reserves"
-                 @close_reserve_date="close_reserve_date" @delete="delete_reserve" :rest_day="rest_day"
-                 :period="period" @insert_rest_days="insert_rest_days" @del_rest="del_rest" @export="export_data"
+    <router-view
+        @login="login" :error="user_info.error" :a_error="A_login_status.error"
+        :model_show="user_info.state==='0'" :user_info="user_info" @A_login="A_login"
+        :teachers="teachers" @update="update_user_info" @click_teacher="click_teacher"
+        :reserves="reserves" @clickDateTime="clickDateTime" :my_reserves="my_reserves"
+        @close_reserve_date="close_reserve_date" @delete="delete_reserve" :rest_day="rest_day"
+        :period="period" @insert_rest_days="insert_rest_days" @del_rest="del_rest" @export="export_data"
     />
   </div>
 </template>
