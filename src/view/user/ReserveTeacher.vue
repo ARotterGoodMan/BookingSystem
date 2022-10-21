@@ -7,12 +7,15 @@
       选择预约老师
     </h2>
     <div class="row">
-      <button class="col-5 teacher" v-for="(item,index) in teachers" :key="item"
+      <b-button class="col-5 teacher" v-for="(item,index) in teachers" :key="item"
               @click="click_teacher(index)">
         <span class="teacher_name h4"><b>{{ item.name }}</b></span>
         <br>
         <span class="teacher_grade">{{ item.grade }}</span>
-      </button>
+      </b-button>
+      <b-toast target="link-button" title="Tooltip title" triggers="focus">
+        Tooltip title
+      </b-toast>
     </div>
   </div>
   <tab-bar nav="reserve_teacher"></tab-bar>

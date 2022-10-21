@@ -10,46 +10,26 @@ import ARemindInfo from "@/view/admin/ARemindInfo";
 import RestDay from "@/view/admin/RestDay";
 
 
-const routes = [
-    {
-        path: '/',
-        component: LoginUp
-    },
-    {
-        path: '/admin',
-        component: ALoginUp
-    },
-    {
-        path: '/admin/remind',
-        component: ARemindInfo
-    },
-    {
-        path: '/admin/rest_day',
-        component: RestDay
-    },
-    {
-        path: '/remind',
-        component: RemindInfo
-    },
-    {
-        path: '/reserve_teacher',
-        component: ReserveTeacher
-    },
-    {
-        path: '/reserve_date',
-        component: ReserveDate
-    },
-    {
-        path: '/UserInfo',
-        component: UserInfo
-    },
-    {
-        path: '/update',
-        component: UpdateUserInfo
-    }
-]
+const routes = [{
+    path: '/', component: LoginUp
+}, {
+    path: '/admin', component: ALoginUp
+}, {
+    path: '/admin/remind', component: ARemindInfo
+}, {
+    path: '/admin/rest_day', component: RestDay
+}, {
+    path: '/remind', component: RemindInfo
+}, {
+    path: '/reserve_teacher', component: ReserveTeacher
+}, {
+    path: '/reserve_date', component: ReserveDate
+}, {
+    path: '/UserInfo', component: UserInfo
+}, {
+    path: '/update', component: UpdateUserInfo
+}]
 
 export const router = createRouter({
-    history: createWebHashHistory(),
-    routes: routes
+    history: createWebHashHistory(), routes: routes
 })

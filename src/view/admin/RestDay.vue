@@ -19,8 +19,6 @@
         <template v-slot:head(setting)="data">
           <span class="text-info text-center" :title="data.label">操作</span>
         </template>
-
-
         <template #cell(setting)="row">
           <button class="btn btn-my" @click="del_rest(row.item)">删除</button>
         </template>
