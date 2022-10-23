@@ -6,7 +6,7 @@
     </h4>
     <div class="list_top">
       <div class="list_top_1">
-        <h3>加入日程提醒</h3>
+        <h3>长按可取消</h3>
       </div>
       <div class="list_top_2">
         <h3><b>{{ my_reserves.length }}</b></h3>
