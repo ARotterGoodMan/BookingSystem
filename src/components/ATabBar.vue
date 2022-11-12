@@ -1,6 +1,12 @@
 <template>
   <ul class="nav nav-fill">
     <li class="nav-item">
+      <a href="#/admin/teachers" class="nav-link" :class="nav==='a-teacher-list'?'active':''">
+        <i class="fa fa-hand-pointer-o"></i><br>
+        教师管理
+      </a>
+    </li>
+    <li class="nav-item">
       <a href="#/admin/rest_day" class="nav-link" :class="nav==='a_rest_day'?'active':''">
         <i class="fa fa-hand-pointer-o"></i><br>
         休息管理

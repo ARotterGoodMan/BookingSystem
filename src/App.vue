@@ -7,6 +7,7 @@
         :reserves="reserves" @clickDateTime="clickDateTime" :my_reserves="my_reserves"
         @close_reserve_date="close_reserve_date" @delete="delete_reserve" :rest_day="rest_day"
         :period="period" @insert_rest_days="insert_rest_days" @del_rest="del_rest" @export="export_data"
+        @insert_teacher="insert_teacher" @del_teacher="del_teacher" @update_teacher="update_teacher"
     />
   </div>
 </template>
@@ -98,25 +99,54 @@ export default {
       }
       setTimeout(() => {
         Axios.my_get_reserve(that, this.user_info)
-      }, 1000)
+      }, 600)
     },
     insert_rest_days(data) {
       const that = this
       Axios.setting_rest_day(data)
       setTimeout(() => {
         Axios.rest_day(that)
-      }, 1000)
+      }, 600)
     },
     del_rest(data) {
       const that = this
       Axios.del_rest(data)
-      console.log(data)
       setTimeout(() => {
         Axios.rest_day(that)
-      }, 1000)
+      }, 600)
     },
     export_data() {
-      Axios.export()
+      if (this.A_login_status.state === "ok") {
+        Axios.export()
+      }
+    },
+    insert_teacher(data) {
+      const that = this
+      if (this.A_login_status.state === "ok") {
+        Axios.insert_teacher(data)
+        setTimeout(() => {
+          Axios.get_teacher(that)
+        }, 600)
+      }
+    },
+    update_teacher(data) {
+      const that = this
+      if (this.A_login_status.state === "ok") {
+        Axios.update_teacher(data)
+        setTimeout(() => {
+          Axios.get_teacher(that)
+        }, 600)
+      }
+    },
+    del_teacher(data) {
+      const that = this
+      if (this.A_login_status.state === "ok") {
+        Axios.del_teacher(data)
+        setTimeout(() => {
+          Axios.get_teacher(that)
+        }, 600)
+      }
+
     }
   },
 }

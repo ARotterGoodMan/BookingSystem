@@ -9,8 +9,6 @@
         <h3><b>{{ teachers_booting_number[index] }}</b></h3>
         <p>
           <b class="text-white">{{ teacher.name }}</b>
-          <br>
-          累计被预约
         </p>
       </div>
     </div>
@@ -19,20 +17,22 @@
       <div class="list row" v-for="(item,index) in my_reserves" :key="item" :id="'list_'+index"
            @dblclick="db_click(index)" @touchstart="touchstart(index)" @touchend="touchend(index)"
            @mouseleave="touchend(index)">
-        <div class="img col-4" :id="'list_img_'+index">
+        <div class="img col-3" :id="'list_img_'+index">
           <h2 class="text-center" style="line-height: 12vh;width: 100%">{{ item.name }}</h2>
         </div>
-        <div class="title col-4">
+        <div class="title col-5">
           <p><b>{{ item.teacher }}</b></p>
           <p>{{ item.time }}</p>
         </div>
-        <div class="date col-4">
-          <h1>
+        <div class="date col-3">
+          <h4>
             <b>{{ item.date.split("-")[1] + '/' + item.date.split("-")[2] }}</b>
-          </h1>
+          </h4>
         </div>
         <div class="delete col-2 float-end text-white text-center none" @click="del(index)">
-          取消
+          <button class="button text-white text-center w-100">
+            取消
+          </button>
         </div>
       </div>
     </div>
@@ -89,7 +89,7 @@ export default {
       } else {
         for (let i = 0; i < this.my_reserves.length; i++) {
           document.getElementById("list_" + i).className = 'list row'
-          document.getElementById("list_img_" + i).className = 'img col-4'
+          document.getElementById("list_img_" + i).className = 'img col-3'
         }
       }
     },
@@ -113,7 +113,7 @@ export default {
         for (let i = 0; i < this.my_reserves.length; i++) {
           setTimeout(() => {
             document.getElementById("list_" + i).className = 'list row'
-            document.getElementById("list_img_" + i).className = 'img col-4'
+            document.getElementById("list_img_" + i).className = 'img col-3'
             this.timeOutEvent = 0
           }, 1000)
         }
@@ -187,17 +187,24 @@ export default {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.date > h1 {
+.date > h4 {
   line-height: 12vh;
 }
 
 .delete {
   height: 12vh;
   display: none;
-  line-height: 12vh;
+}
+
+.delete > .button {
+  height: 10vh;
+  line-height: 1.2;
   background-color: red;
   border-radius: 20px;
+  text-align: center;
   font-size: 0.8rem;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .active > .delete {

@@ -56,8 +56,8 @@ export default {
     return {
       log: console.log,
       timeOutEvent: 0,
-      teacher1: require('@/assets/teacher/teacher0.png'),
-      teacher2: require('@/assets/teacher/teacher1.png'),
+      teacher1: require('@/assets/teacher/teacher0.jpg'),
+      teacher2: require('@/assets/teacher/teacher1.jpg'),
     }
   },
   methods: {
@@ -168,7 +168,7 @@ export default {
 }
 
 .list {
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
   width: 100%;
   height: 12vh;
   margin: 0 auto 2vh auto;
@@ -177,10 +177,11 @@ export default {
 
 .img {
   line-height: 12vh;
+  height:12vh;
 }
 
 .img > img {
-  width: 100%;
+  height: 80%;
   margin: auto;
 }
 

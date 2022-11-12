@@ -49,12 +49,10 @@ export default {
 <style scoped>
 .container {
   height: 100vh;
-  width: 90vw;
 }
 
 .content {
   height: 60vh;
-  width: 90vw;
   padding: 15vh 2vw 25vh 0;
 }
 

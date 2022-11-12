@@ -154,13 +154,6 @@ export default {
   margin-left: 0;
 }
 
-.t_head {
-  height: auto;
-}
-
-.t_body {
-  height: 50vh;
-}
 
 .sub_btn {
   background: #37c2bb;

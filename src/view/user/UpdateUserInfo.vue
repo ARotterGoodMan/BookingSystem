@@ -30,6 +30,7 @@
                   v-model="form.subjects"
                   :options="subject_list"
                   name="subjects"
+                  :state="(form.subjects.length === 3)"
               ></b-form-checkbox-group>
             </td>
           </tr>
@@ -64,6 +65,7 @@
                   type="number"
                   min="2000"
                   max="2099"
+                  :state="(form.grade === '' || form.grade > 2000 && form.grade < 2099)?null:false"
                   v-model="form.grade"
                   name="grade"
               ></b-form-input>
