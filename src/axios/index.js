@@ -2,7 +2,7 @@ import axios from "axios";
 
 const get = axios.get;
 const post = axios.post;
-axios.defaults.baseURL = "http://1.12.246.2:5000/"
+axios.defaults.baseURL = ""
 
 export default class Axios {
     static set_insert_data = (user_info, data) => {
@@ -40,8 +40,7 @@ export default class Axios {
 
     static login = (that, data) => {
         data = {
-            name: data.name,
-            A_id: data.A_id
+            name: data.name, A_id: data.A_id
         }
         that.user_info = {}
         post("login", data).then(res => {
@@ -129,22 +128,18 @@ export default class Axios {
         })
     }
     static setting_rest_day = (data) => {
-        post("setting_rest", data).then(
-            res => {
-                return res.status
-            }
-        )
+        post("setting_rest", data).then(res => {
+            return res.status
+        })
     }
     static del_rest = (data) => {
-        post(this.url + "/del_rest", data).then(
-            res => {
-                return res.status
-            }
-        )
+        post(this.url + "/del_rest", data).then(res => {
+            return res.status
+        })
     }
     static export = () => {
-        post("export").then(
-            res => {
+        post("export", {}, {responseType: 'blob'})
+            .then(res => {
                 const blob = new Blob([res.data], {
                     type: 'application/vnd.ms-excel'
                 })
@@ -156,8 +151,7 @@ export default class Axios {
                 downloadElement.click();
                 document.body.removeChild(downloadElement);
                 window.URL.revokeObjectURL(href);
-            }
-        )
+            })
     }
 }
 

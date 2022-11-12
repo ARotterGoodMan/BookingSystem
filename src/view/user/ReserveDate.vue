@@ -24,7 +24,7 @@
         <b-alert variant="danger" :show="my_reserves_date.indexOf(form.date)!==-1">每日最多可预约一次</b-alert>
       </div>
       <input type="text" class="form-control date rounded w-75 m-auto"
-             v-model="form.remark" placeholder="你还有什么想沟通的">
+             v-model="form.remark" placeholder="您主要想沟通的问题是？">
       <div class="d-grid">
         <b-button type="submit" class="click">确定预约</b-button>
       </div>

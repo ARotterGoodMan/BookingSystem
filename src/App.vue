@@ -7,6 +7,7 @@
         :reserves="reserves" @clickDateTime="clickDateTime" :my_reserves="my_reserves"
         @close_reserve_date="close_reserve_date" @delete="delete_reserve" :rest_day="rest_day"
         :period="period" @insert_rest_days="insert_rest_days" @del_rest="del_rest" @export="export_data"
+        @insert_teacher="insert_teacher" @del_teacher="del_teacher" @update_teacher="update_teacher"
     />
   </div>
 </template>
@@ -117,6 +118,15 @@ export default {
     },
     export_data() {
       Axios.export()
+    },
+    insert_teacher(data) {
+      console.log("insert_teacher", data)
+    },
+    update_teacher(data) {
+      console.log("update_teacher", data)
+    },
+    del_teacher(data) {
+      console.log("del_teacher", data)
     }
   },
 }

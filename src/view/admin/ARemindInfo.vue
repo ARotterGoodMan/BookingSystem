@@ -9,8 +9,6 @@
         <h3><b>{{ teachers_booting_number[index] }}</b></h3>
         <p>
           <b class="text-white">{{ teacher.name }}</b>
-          <br>
-          累计被预约
         </p>
       </div>
     </div>

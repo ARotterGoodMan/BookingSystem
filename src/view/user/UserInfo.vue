@@ -217,7 +217,7 @@ export default {
 <style scoped>
 
 .container {
-  margin: -25vh 5vw 0 5vw;
+  margin: -25vh auto 0 auto;
   width: 90vw;
   height: calc(90vh - 64px);
   overflow: auto;
