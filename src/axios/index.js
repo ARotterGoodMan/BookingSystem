@@ -2,7 +2,7 @@ import axios from "axios";
 
 const get = axios.get;
 const post = axios.post;
-axios.defaults.baseURL = "http://www.svipsvip.plus:5000/"
+axios.defaults.baseURL = ""
 
 export default class Axios {
     static set_insert_data = (user_info, data) => {
