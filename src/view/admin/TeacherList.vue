@@ -25,11 +25,6 @@
           <button class="btn btn-my" @click="del_teacher(row.item)">删除</button>
           <button class="btn btn-my" @click="update_teacher(row.item)">修改</button>
         </template>
-        <template v-slot:cell(title)="row">
-          <div class="title">
-            {{ row.item.title }}
-          </div>
-        </template>
       </b-table>
     </div>
 
@@ -139,14 +134,6 @@ export default {
   padding-left: 5vw;
   padding-right: 5vw;
   border: none;
-}
-.title{
-  width:24vw;
-  font-size: 0.8rem;
-  overflow: hidden;
-  display:-webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
 
 .btn-my {

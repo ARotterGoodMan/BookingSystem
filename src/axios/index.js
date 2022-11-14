@@ -133,7 +133,7 @@ export default class Axios {
         })
     }
     static del_rest = (data) => {
-        post("del_rest", data).then(res => {
+        post(this.url + "/del_rest", data).then(res => {
             return res.status
         })
     }
@@ -151,24 +151,6 @@ export default class Axios {
                 downloadElement.click();
                 document.body.removeChild(downloadElement);
                 window.URL.revokeObjectURL(href);
-            })
-    }
-    static del_teacher = (data) => {
-        post("del_teacher", data)
-            .then(res => {
-                return res.status
-            })
-    }
-    static insert_teacher = (data) => {
-        post("insert_teacher", data)
-            .then(res => {
-                return res.status
-            })
-    }
-    static update_teacher = (data) => {
-        post("update_teacher", data)
-            .then(res => {
-                return res.status
             })
     }
 }

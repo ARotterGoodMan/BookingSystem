@@ -99,54 +99,34 @@ export default {
       }
       setTimeout(() => {
         Axios.my_get_reserve(that, this.user_info)
-      }, 600)
+      }, 1000)
     },
     insert_rest_days(data) {
       const that = this
       Axios.setting_rest_day(data)
       setTimeout(() => {
         Axios.rest_day(that)
-      }, 600)
+      }, 1000)
     },
     del_rest(data) {
       const that = this
       Axios.del_rest(data)
+      console.log(data)
       setTimeout(() => {
         Axios.rest_day(that)
-      }, 600)
+      }, 1000)
     },
     export_data() {
-      if (this.A_login_status.state === "ok") {
-        Axios.export()
-      }
+      Axios.export()
     },
     insert_teacher(data) {
-      const that = this
-      if (this.A_login_status.state === "ok") {
-        Axios.insert_teacher(data)
-        setTimeout(() => {
-          Axios.get_teacher(that)
-        }, 600)
-      }
+      console.log("insert_teacher", data)
     },
     update_teacher(data) {
-      const that = this
-      if (this.A_login_status.state === "ok") {
-        Axios.update_teacher(data)
-        setTimeout(() => {
-          Axios.get_teacher(that)
-        }, 600)
-      }
+      console.log("update_teacher", data)
     },
     del_teacher(data) {
-      const that = this
-      if (this.A_login_status.state === "ok") {
-        Axios.del_teacher(data)
-        setTimeout(() => {
-          Axios.get_teacher(that)
-        }, 600)
-      }
-
+      console.log("del_teacher", data)
     }
   },
 }
