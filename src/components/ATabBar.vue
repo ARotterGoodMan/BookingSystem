@@ -1,21 +1,15 @@
 <template>
   <ul class="nav nav-fill">
     <li class="nav-item">
-      <a href="#/admin/teachers" class="nav-link" :class="nav==='a-teacher-list'?'active':''">
-        <i class="fa fa-hand-pointer-o"></i><br>
-        教师管理
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="#/admin/rest_day" class="nav-link" :class="nav==='a_rest_day'?'active':''">
-        <i class="fa fa-hand-pointer-o"></i><br>
-        休息管理
-      </a>
-    </li>
-    <li class="nav-item">
       <a href="#/admin/remind" class="nav-link" :class="nav==='a_remind'?'active':''">
         <i class="fa fa-envelope-o"></i><br>
         预约信息
+      </a>
+    </li>
+    <li class="nav-item" @click="$emit('setting')">
+      <a href="#/admin/students" class="nav-link" :class="nav==='a-teacher-list'?'active':''">
+        <i class="fa fa-hand-pointer-o"></i><br>
+        管理
       </a>
     </li>
   </ul>

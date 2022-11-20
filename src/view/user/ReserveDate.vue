@@ -12,14 +12,21 @@
                   ||my_reserves_date.indexOf(form.date)!==-1'
                   id="reserves"
                   :class="form.time===time?'active':''"
-        ><i class="fa fa-angle-down"></i><br>{{ time.split("-")[0] }}<br>{{ time.split("-")[1] }}
+        ><i class="fa fa-angle-down fa-08x"></i>
+          <div class="c-time">
+            {{ time.split("-")[0] }}<br>{{ time.split("-")[1] }}
+          </div>
         </b-button>
-        <b-button class="but btn-sm col-3" variant="outline-primary"
+        <b-button class="but col-3" variant="outline-primary"
                   @click="clickTime('其他时间')" id="reserves"
+                  size="sm"
                   :disabled='my_reserves_date.indexOf(form.date)!==-1'
                   :class="form.time==='其他时间'?'active':''"
                   style="font-size: 1rem !important;"
-        ><i class="fa fa-angle-down"></i><br>其它时间<br>咨询老师
+        ><i class="fa fa-angle-down fa-08x"></i>
+          <div class="c-time">
+            其它时间<br>咨询老师
+          </div>
         </b-button>
         <b-alert variant="danger" :show="my_reserves_date.indexOf(form.date)!==-1">每日最多可预约一次</b-alert>
       </div>
@@ -126,7 +133,6 @@ export default {
   float: right;
   margin-top: 5vh;
   margin-right: 5vw;
-  font-size: 2rem;
   margin-bottom: 5vh;
 }
 
@@ -153,15 +159,17 @@ export default {
 
 .but {
   margin: 2vh 2vw;
-  line-height: 2rem;
+  line-height: 2.5rem;
   background-color: #498a78;
   border-radius: 20px;
   color: #ffffff;
   font-size: 1.5rem;
+  height: 15vh;
 }
 
+
 .active {
-  background-color:#0d6efd !important;
+  background-color: #0d6efd !important;
 }
 
 .but:disabled {
@@ -169,6 +177,16 @@ export default {
   color: white;
 }
 
+.fa-08x {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+}
+
+.c-time {
+  display: block;
+  margin-top: -5px;
+}
 
 .click {
   width: 13rem;

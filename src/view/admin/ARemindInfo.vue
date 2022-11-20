@@ -37,11 +37,10 @@
       </div>
     </div>
   </div>
-  <a-tab-bar nav="a_remind"/>
+  <a-tab-bar nav="a_remind" @setting="$emit('setting')"/>
 </template>
 
 <script>
-
 import ATabBar from "@/components/ATabBar";
 
 export default {
@@ -51,7 +50,7 @@ export default {
     my_reserves: [],
     teachers: []
   },
-  emits: ['delete','export'],
+  emits: ['delete', 'export'],
   data() {
     return {
       timeOutEvent: 0,

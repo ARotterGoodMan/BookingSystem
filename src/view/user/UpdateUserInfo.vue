@@ -68,6 +68,7 @@
                   :state="(form.grade === '' || form.grade > 2000 && form.grade < 2099)?null:false"
                   v-model="form.grade"
                   name="grade"
+                  required
               ></b-form-input>
             </td>
           </tr>
@@ -78,6 +79,7 @@
                   class="w-75"
                   v-model="form.parents"
                   name="parents"
+                  required
               ></b-form-input>
             </td>
           </tr>
@@ -90,6 +92,7 @@
                   name="phoneNumber"
                   length="11"
                   :state="form.phoneNumber.length === 11||form.phoneNumber===''?null:false"
+                  required
               ></b-form-input>
             </td>
           </tr>

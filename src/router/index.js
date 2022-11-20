@@ -9,10 +9,16 @@ import ALoginUp from "@/view/admin/ALoginUp";
 import ARemindInfo from "@/view/admin/ARemindInfo";
 import RestDay from "@/view/admin/RestDay";
 import TeacherList from "@/view/admin/TeacherList";
+import StudentList from "@/view/admin/StudentList";
+import SignUp from "@/view/user/SignUp";
 
 
 const routes = [{
     path: '/', component: LoginUp
+}, {
+    path: '/login', component: LoginUp
+}, {
+    path: '/sign_up', component: SignUp
 }, {
     path: '/admin', component: ALoginUp
 }, {
@@ -21,6 +27,8 @@ const routes = [{
     path: '/admin/rest_day', component: RestDay
 }, {
     path: '/admin/teachers', component: TeacherList
+}, {
+    path: '/admin/students', component: StudentList
 }, {
     path: '/remind', component: RemindInfo
 }, {

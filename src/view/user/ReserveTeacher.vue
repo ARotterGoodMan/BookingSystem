@@ -8,15 +8,20 @@
     </h2>
     <div class="content">
       <div class="list row" v-for="(item,index) in teachers" :key="item" :id="'list_'+index"
-           @click="click_teacher(index)">
+      >
         <div class="img col-3">
           <img :src="require('@/assets/teacher/teacher'+index+'.jpg')" alt="">
         </div>
-        <div class="title col-9">
-          <h6><b>{{ item.name }}</b>
-            <b-badge class="badge" :variant="item.grade==='高级咨询师'?'warning':'light'">{{ item.grade }}</b-badge>
+        <div class="teacher col-6 col-lg-8">
+          <h6>
+            <b>{{ item.name }}</b>
           </h6>
-          <p>{{ item.title }}</p>
+        </div>
+        <div class="col-3 col-lg-1 text-center booking"
+             @click="click_teacher(index)">预约
+        </div>
+        <div class="col-12">
+          <p class="teacher_title">{{ item.title ? item.title : "..." }}</p>
         </div>
       </div>
     </div>
@@ -71,22 +76,71 @@ export default {
 
 <style scoped>
 .container {
-  margin: 0 auto;
+  margin: -2vh auto auto auto;
   width: 90vw;
-  height: calc(100vh - 64px);
+  height: calc(102vh - 64px);
   overflow: auto;
-}
-
-.header2 {
-  font-family: "Source Han Serif SC", serif;
-  color: rgb(43, 91, 84);
-  font-weight: bolder;
 }
 
 .top {
   width: 100%;
   height: 25vh;
   text-align: center;
+}
+
+.header2 {
+  font-family: "Source Han Serif SC", serif;
+  color: rgb(43, 91, 84);
+  margin-top: -2vh;
+  font-weight: bolder;
+}
+
+.content {
+  width: 100%;
+}
+
+.list {
+  width: 100%;
+  height: 23vh;
+  overflow: hidden;
+  margin: 0 auto 2vh auto;
+  background-color: #e0f5ef;
+  padding-right: 5px;
+  border-top: 4px solid #ccc;
+}
+
+.teacher > h6 {
+  font-size: 1.25rem;
+  line-height: 12vh;
+}
+
+.teacher > p {
+  font-size: 1.25rem;
+  line-height: 1rem;
+}
+
+.booking {
+  margin: auto;
+  background-color: #fff;
+  padding: 5px;
+}
+
+.teacher_title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.7rem;
+}
+
+.img {
+  line-height: 12vh;
+  height: 12vh;
+  padding-left: 1vw;
+}
+
+.img img {
+  height: 90%;
 }
 
 .logo {
@@ -135,48 +189,6 @@ export default {
   padding-left: 5vw;
   padding-right: 5vw;
   border: none;
-}
-
-.content {
-  width: 100%;
-}
-
-.title > h6 {
-  line-height: 2.6rem;
-  font-size: 1.25rem;
-}
-
-.title > h6 > .badge {
-  margin-left: 2vw !important;
-  font-size: 0.6rem !important;
-  line-height: 0.6rem !important;
-}
-
-.title > p {
-  font-size: 0.8rem;
-  line-height: 0.9rem;
-  color: rgba(0,0,0,0.5);
-}
-
-
-.list {
-  background-color: #e0f5ef;
-  width: 100%;
-  height: 12vh;
-  margin: 0 auto 2vh auto;
-  color: #008080;
-  overflow: hidden;
-  text-overflow:ellipsis
-}
-
-.img {
-  line-height: 12vh;
-  height: 12vh;
-  padding-left: 1vw;
-}
-
-.img img {
-  height: 90%;
 }
 
 

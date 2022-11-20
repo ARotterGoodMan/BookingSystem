@@ -2,6 +2,7 @@ import axios from "axios";
 
 const get = axios.get;
 const post = axios.post;
+
 axios.defaults.baseURL = ""
 
 export default class Axios {
@@ -20,7 +21,8 @@ export default class Axios {
             remark: data.remark,
             teacher: user_info.teacher,
             date: data.date,
-            time: data.time
+            time: data.time,
+            client_grade: data.client_grade
         }
     }
     static set_update_user_data = (data) => {
@@ -29,12 +31,15 @@ export default class Axios {
             name: data.name,
             sex: data.sex,
             grade: data.grade,
-            subjects: data.subjects.join(" "),
+            subjects: data.subjects ? data.subjects.join(" ") : '',
             fraction: data.fraction === '' ? 0 : data.fraction,
             school: data.school,
             parents: data.parents,
             mail: data.mail,
             phoneNumber: data.phoneNumber,
+            client_grade: data.client_grade,
+            state: data.state ? data.state : '1',
+            old_client_grade: data.old_client_grade
         }
     }
 
@@ -47,7 +52,11 @@ export default class Axios {
             that.user_info = res.data
         })
     }
-
+    static sign_up = (data) => {
+        post("sign_up", data).then(res => {
+            return res.status
+        })
+    }
     static a_logon = (that, data) => {
         post("a_login", data).then(res => {
             that.A_login_status.state = res.data.state
@@ -119,6 +128,20 @@ export default class Axios {
                 return res.status
             })
     }
+    static get_students_list = (that) => {
+        that.students = []
+        post("get_students_list").then(res => {
+            for (let i = 0; i < res.data.length; i++) {
+                that.students.push(res.data[i])
+            }
+        })
+    }
+    static insert_student = (data) => {
+        post("insert_student", data)
+            .then(res => {
+                return res.status
+            })
+    }
     static rest_day = (that) => {
         that.rest_day = []
         get("rest_day").then(res => {
@@ -133,7 +156,7 @@ export default class Axios {
         })
     }
     static del_rest = (data) => {
-        post(this.url + "/del_rest", data).then(res => {
+        post("del_rest", data).then(res => {
             return res.status
         })
     }
@@ -153,5 +176,21 @@ export default class Axios {
                 window.URL.revokeObjectURL(href);
             })
     }
+    static insert_teacher = (data) => {
+        post("insert_teacher", data).then(res => {
+            return res.status
+        })
+    }
+    static del_teacher = (data) => {
+        post("del_teacher", data).then(res => {
+            return res.status
+        })
+    }
+    static update_teacher = (data) => {
+        post("update_teacher", data).then(res => {
+            return res.status
+        })
+    }
+
 }
 

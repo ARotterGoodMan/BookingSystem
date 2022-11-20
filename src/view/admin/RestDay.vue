@@ -2,28 +2,30 @@
   <div class="container">
     <h4>
       休息日管理
-      <i class="fa fa-calendar-check-o float-end" style="color:#02bfbf;"></i>
     </h4>
     <div class="insert_rest_days">
       <button class="btn btn-info" @click="rest_days_shown">添加休息日</button>
     </div>
-    <div class="table_body">
-      <b-table :fields="fields" :items="rest_day.slice(start_row,end_row)">
-        <template v-slot:head(teacher)="data">
-          <span class="text-info text-center" :title="data.label">教师姓名</span>
-        </template><template v-slot:head(date)="data">
-          <span class="text-info text-center" :title="data.label">休息时日期</span>
-        </template><template v-slot:head(time)="data">
-          <span class="text-info text-center" :title="data.label">休息时间</span>
-        </template>
-        <template v-slot:head(setting)="data">
-          <span class="text-info text-center" :title="data.label">操作</span>
-        </template>
-        <template #cell(setting)="row">
-          <button class="btn btn-my" @click="del_rest(row.item)">删除</button>
-        </template>
-      </b-table>
-    </div>
+    <b-table-simple class="table_body">
+      <b-thead>
+        <b-tr class="row">
+          <b-th class="col text-center text-info">教师姓名</b-th>
+          <b-th class="col text-center text-info">休息日期</b-th>
+          <b-th class="col text-center text-info">休息时间</b-th>
+          <b-th class="col text-center text-info">操作</b-th>
+        </b-tr>
+      </b-thead>
+      <b-tbody>
+        <b-tr class="row" v-for="data in rest_day" :key="data">
+          <b-td class="col text-center">{{ data.teacher }}</b-td>
+          <b-td class="col text-center">{{ data.date }}</b-td>
+          <b-td class="col text-center">{{ data.time }}</b-td>
+          <b-td class="col text-center">
+            <button class="btn btn-my" size="sm" @click="del_rest(data)">删除</button>
+          </b-td>
+        </b-tr>
+      </b-tbody>
+    </b-table-simple>
     <b-pagination
         class="pagination"
         v-model="page"
@@ -33,7 +35,7 @@
         align="fill"
     ></b-pagination>
   </div>
-  <a-tab-bar nav="a_rest_day"/>
+  <a-tab-bar-setting nav="a_rest_day"/>
   <b-modal v-model="insert_rest_days_shown" centered="true" hide-footer="true" hide-header="true">
     <div class="close" @click="rest_days_shown"><i class="fa fa-2x fa-close float-end"></i></div>
     <b-form @submit="insert_rest_days">
@@ -64,19 +66,19 @@
         </tbody>
       </table>
       <div class="d-grid">
-        <button type="submit" class="sub_btn">保存</button>
+        <b-button type="submit" class="sub_btn">保存</b-button>
       </div>
     </b-form>
   </b-modal>
 </template>
 
 <script>
-import ATabBar from "@/components/ATabBar"
+import ATabBarSetting from "@/components/ATabBarSetting";
 
 export default {
   name: "RestDay",
   components: {
-    ATabBar
+    ATabBarSetting
   },
   props: {
     rest_day: [],
@@ -147,13 +149,16 @@ export default {
 }
 
 .table_body {
-  height: 71vh;
+  height: 66vh;
   overflow: auto;
-  width: 100%;
   margin-right: 0;
   margin-left: 0;
+
 }
 
+.table_body > tbody > tr > td {
+  font-size: 0.7rem;
+}
 
 .sub_btn {
   background: #37c2bb;
@@ -166,13 +171,12 @@ export default {
 }
 
 .btn-my {
-  --bs-btn-padding-x: 0rem;
-  --bs-btn-padding-y: 0rem;
-  --bs-btn-font-size: 1rem;
-  --bs-btn-font-weight: 400;
-  --bs-btn-line-height: 1;
-  --bs-btn-color: #212529;
-  --bs-btn-bg: transparent;
-  --bs-btn-border-width: 0px;
+  padding: 0rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #212529;
+  background-color: transparent;
+  border: none;
 }
 </style>
