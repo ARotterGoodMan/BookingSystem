@@ -4,12 +4,12 @@
     <div class="clear"></div>
     <b-form @submit="dates(form.date)">
       <input type="date" class="form-control date rounded m-auto text-center"
-             :min="start" :max="end" v-model="form.date" required placeholder="请选择预约日期">
+             :min="start" :max="end" v-model="form.date" required>
       <div class="btn_list">
         <b-button class="but btn-sm col-3" v-for="time in period" variant="outline-primary" :key="time"
                   @click="clickTime(time)"
                   :disabled='reserves.indexOf(form.date+" "+time)!==-1&&form.date!==""
-                  ||my_reserves_date.indexOf(form.date)!==-1'
+                  ||my_reserves_date.indexOf(form.date+clickTeacherName)!==-1'
                   id="reserves"
                   :class="form.time===time?'active':''"
         ><i class="fa fa-angle-down fa-08x"></i>
@@ -20,7 +20,7 @@
         <b-button class="but col-3" variant="outline-primary"
                   @click="clickTime('其他时间')" id="reserves"
                   size="sm"
-                  :disabled='my_reserves_date.indexOf(form.date)!==-1'
+                  :disabled='my_reserves_date.indexOf(form.date+clickTeacherName)!==-1'
                   :class="form.time==='其他时间'?'active':''"
                   style="font-size: 1rem !important;"
         ><i class="fa fa-angle-down fa-08x"></i>
@@ -36,7 +36,7 @@
         <b-button type="submit" class="click">确定预约</b-button>
       </div>
     </b-form>
-    <div class="update_info text-center h6 text-white" style="margin-top: 1vh">
+    <div class="update_info text-center h6 text-white" style="margin: 2vh auto">
       <b>基本信息想要修改?<span @click="update_info" style="color:#1b9ea7;">点击修改信息</span></b>
     </div>
   </div>
@@ -79,16 +79,16 @@ export default {
       show_alert: false,
       my_reserves_date: [],
       form: {
-        date: '',
+        date: start,
         time: '',
         remark: ''
       }
     };
   },
-  updated() {
+  created() {
     let my_reserves_date = []
     for (let i = 0; i < this.my_reserves.length; i++) {
-      my_reserves_date.push(this.my_reserves[i].date);
+      my_reserves_date.push(this.my_reserves[i].date + this.my_reserves[i].teacher);
     }
     this.my_reserves_date = my_reserves_date
   },
@@ -105,7 +105,6 @@ export default {
     },
     dates() {
       if (this.form.time !== '') {
-        console.log(this.form.date + " " + this.form.time)
         this.$emit('clickDateTime', this.form)
       } else {
         this.show_alert = true
@@ -131,9 +130,9 @@ export default {
   text-align: center;
   color: #fff;
   float: right;
-  margin-top: 5vh;
+  margin-top: 2vh;
   margin-right: 5vw;
-  margin-bottom: 5vh;
+  margin-bottom: 3vh;
 }
 
 .container {

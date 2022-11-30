@@ -18,7 +18,9 @@
            @dblclick="db_click(index)" @touchstart="touchstart(index)" @touchend="touchend(index)"
            @mouseleave="touchend(index)">
         <div class="img col-3">
-          <img class="rounded-circle" :src="item.teacher==='王老师'?teacher1:teacher2"
+          <img class="rounded-circle"
+               :src="require('@/assets/teacher/teacher'+
+               (teachers.find(o => o.name === item.teacher).id-1) +'.jpg')"
                alt="item.teacher">
         </div>
         <div class="title col-5">
@@ -49,20 +51,18 @@ export default {
     TabBar
   },
   props: {
-    my_reserves: []
+    my_reserves: [],
+    teachers: [],
   },
   emits: ['delete'],
   data() {
     return {
       log: console.log,
       timeOutEvent: 0,
-      teacher1: require('@/assets/teacher/teacher0.jpg'),
-      teacher2: require('@/assets/teacher/teacher1.jpg'),
     }
   },
   methods: {
     del(index) {
-      console.log(this.my_reserves[index])
       this.$emit('delete', this.my_reserves[index])
     },
     db_click(index) {
@@ -168,7 +168,7 @@ export default {
 }
 
 .list {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   width: 100%;
   height: 12vh;
   margin: 0 auto 2vh auto;
@@ -177,7 +177,7 @@ export default {
 
 .img {
   line-height: 12vh;
-  height:12vh;
+  height: 12vh;
 }
 
 .img > img {

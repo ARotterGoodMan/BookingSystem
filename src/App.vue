@@ -2,13 +2,14 @@
   <div class="app">
     <router-view
         @login="login" :error="user_info.error" :a_error="A_login_status.error"
-        :model_show="user_info.state==='0'" :user_info="user_info" @A_login="A_login"
-        :teachers="teachers" @update="update_user_info" @click_teacher="click_teacher"
-        :reserves="reserves" @clickDateTime="clickDateTime" :my_reserves="my_reserves"
-        @close_reserve_date="close_reserve_date" @delete="delete_reserve" :rest_day="rest_day"
-        :period="period" @insert_rest_days="insert_rest_days" @del_rest="del_rest" @export="export_data"
+        :model_show="user_info.state==='0'" :user_info="user_info" :rest_day="rest_day"
+        :my_reserves="my_reserves" :students="students" :clickTeacherName="clickTeacherName"
+        @A_login="A_login" :teachers="teachers" :reserves="reserves" :period="period"
+        @update="update_user_info" @click_teacher="click_teacher" @clickDateTime="clickDateTime"
+        @close_reserve_date="close_reserve_date" @delete="delete_reserve"
+        @insert_rest_days="insert_rest_days" @del_rest="del_rest" @export="export_data"
         @insert_teacher="insert_teacher" @del_teacher="del_teacher" @update_teacher="update_teacher"
-        :students="students" @setting="setting" @insert_student="insert_student" @sign_up_over="sign_up_over"
+        @setting="setting" @insert_student="insert_student" @sign_up_over="sign_up_over"
     />
   </div>
 </template>
@@ -30,7 +31,8 @@ export default {
       timeTo: null,
       my_reserves: [],
       rest_day: [],
-      students: []
+      students: [],
+      clickTeacherName: ''
     }
   },
   created() {
@@ -81,6 +83,7 @@ export default {
     },
     click_teacher(data) {
       const that = this
+      this.clickTeacherName = data
       this.user_info.teacher = data
       if (this.user_info.state === "1") {
         Axios.get_reserve(that, data)
@@ -108,7 +111,15 @@ export default {
     },
     delete_reserve(data) {
       const that = this
-      Axios.delete(data)
+      let del_date = {
+        teacher: data.teacher,
+        name: data.name,
+        time: data.time,
+        date: data.date,
+        school: this.user_info.school,
+        grade: this.user_info.grade
+      }
+      Axios.delete(del_date)
       setTimeout(() => {
         Axios.my_get_reserve(that, this.user_info)
       }, 1000)

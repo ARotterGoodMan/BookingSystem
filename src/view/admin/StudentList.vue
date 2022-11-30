@@ -173,6 +173,7 @@
                   && student_data.grade < 2099)?null:false"
                   name="grade"
                   size="sm"
+                  number
               ></b-form-input>
             </td>
           </tr>
@@ -367,8 +368,7 @@ export default {
           client_grade: this.student_data.client_grade,
           old_client_grade: this.select.client_grade
         }
-      }
-      if (this.student_data.state === '0') {
+      } else if (this.student_data.state === '0') {
         this.student_data = {
           A_id: this.student_data.A_id ? this.student_data.A_id : '',
           name: this.student_data.name,
@@ -384,10 +384,11 @@ export default {
           client_grade: this.student_data.client_grade,
           old_client_grade: this.students[this.student_data.index].client_grade
         }
+      } else {
+        this.student_data.old_client_grade = this.students[this.student_data.index].client_grade
       }
       this.$emit("update", this.student_data)
       this.student_data_show = !this.student_data_show
-      console.log(this.student_data)
     }
   }
 }

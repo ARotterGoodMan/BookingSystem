@@ -10,7 +10,7 @@
       <i class="fa fa-diamond text-white"></i>
       <br><span class="grade">2023届学员</span>
     </div>
-    <b-form>
+    <b-form @submit="update">
       <table class="info_table">
         <tbody>
           <tr>
@@ -68,6 +68,7 @@
                   :state="(form.grade === '' || form.grade > 2000 && form.grade < 2099)?null:false"
                   v-model="form.grade"
                   name="grade"
+                  number
                   required
               ></b-form-input>
             </td>
@@ -108,11 +109,12 @@
           </tr>
         </tbody>
       </table>
+      <div class="update d-grid">
+        <button class="update_info" type="submit">保存个人信息</button>
+      </div>
     </b-form>
-    <div class="update d-grid">
-      <button class="update_info" @click="update">保存个人信息</button>
-    </div>
   </div>
+
 </template>
 
 <script>
@@ -138,7 +140,9 @@ export default {
         school: this.user_info.school ? this.user_info.school : '',
         parents: this.user_info.parents ? this.user_info.parents : '',
         phoneNumber: this.user_info.phoneNumber ? this.user_info.phoneNumber : '',
-        mail: this.user_info.mail ? this.user_info.mail : ''
+        mail: this.user_info.mail ? this.user_info.mail : '',
+        client_grade: this.user_info.client_grade,
+        old_client_grade: this.user_info.client_grade
       },
       sex_list: ["男", "女"],
       subject_list: ["物理", "化学", "生物", "政治", "历史", "地理"]

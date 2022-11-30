@@ -7,7 +7,7 @@
       <img :src="icon" alt="" class="fa-4x">
       <span class="name">{{ user_info.name }}</span>
       <i class="fa fa-diamond text-white"></i>
-      <br><span class="grade">2023届学员</span>
+      <br><span class="grade">{{ year }}届学员</span>
     </div>
     <table class="info_table">
       <tbody>
@@ -92,6 +92,7 @@ export default {
   },
   data() {
     return {
+      year: new Date().getMonth() + 1 >= 9 ? new Date().getFullYear() + 1 : new Date().getFullYear(),
       grade: this.user_info.grade,
       icon: require("@/assets/icon/personal-privacy.png")
     }
